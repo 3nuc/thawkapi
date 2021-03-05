@@ -15,11 +15,13 @@ namespace thawkapi.Controllers
     private Random generator = new Random();
     private TricksService tricksService = new TricksService();
 
-    [HttpGet]
-    public string GetTrick() {
-      var tricks = this.tricksService.GetTricks();
-      int trickIndex = this.generator.Next(0, tricks.Length);
-      return tricks[trickIndex];
+    [HttpGet("random")]
+    public string GetRandomTrick() {
+      return tricksService.GetRandomTrick();
+    }
+    [HttpGet("one")]
+    public string[] GetAllTricks() {
+      return tricksService.GetAllTricks();
     }
   }
 }
